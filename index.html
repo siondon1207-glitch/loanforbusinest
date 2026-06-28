@@ -1,23 +1,762 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
-    <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
-    </nav>
-    <main>
-      <h1>Home page</h1>
-    </main>
-  </body>
-</html>
+
+ 
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FinancialProduct",
+    "name": "법인신용대출",
+    "description": "2026년 기준 전국 법인사업자를 위한 신용등급 기반 무담보 신용대출 금리 및 한도 비교 정보 제공",
+    "provider": {
+      "@type": "Organization",
+      "name": "법인금융정책연구원",
+      "url": "https://finance.reliabledone.com"
+    },
+    "areaServed": {
+      "@type": "AdministrativeArea",
+      "name": "대한민국"
+    },
+    "feesAndCommissionsSpecification": "상담 및 견적 산출 비용 무료",
+    "annualPercentageRate": {
+      "@type": "QuantitativeValue",
+      "minValue": "3.2",
+      "maxValue": "14.5",
+      "unitText": "정부정책자금 및 시중은행 평균 금리"
+    }
+  }
+  </script>
+
+  <style>
+    :root {
+      --primary-color: #1e3a8a;
+      --secondary-color: #0d9488;
+      --accent-color: #f97316;
+      --bg-color: #f8fafc;
+      --card-bg: #ffffff;
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+      --border-color: #e2e8f0;
+      --highlight-soft: #f0fdf4;
+    }
+
+    body {
+      font-family: "Noto Sans KR", "Malgun Gothic", sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.8;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--primary-color), #2563eb);
+      color: white;
+      padding: 2.5rem 1rem;
+      text-align: center;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -0.05em;
+    }
+
+    header p {
+      margin: 0.75rem 0 1.5rem 0;
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+
+    nav {
+      max-width: 1200px;
+      margin: -1.5rem auto 0 auto;
+      background: var(--card-bg);
+      border-radius: 12px;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+      padding: 1rem;
+    }
+
+    nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    nav a {
+      color: var(--text-main);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: color 0.2s ease;
+    }
+
+    nav a:hover {
+      color: var(--secondary-color);
+    }
+
+    main {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    @media (min-width: 1024px) {
+      main {
+        grid-template-columns: 3fr 1fr;
+      }
+    }
+
+    .content-area {
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+    }
+
+    section {
+      background-color: var(--card-bg);
+      padding: 2.5rem;
+      border-radius: 16px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      border: 1px solid var(--border-color);
+    }
+
+    h2 {
+      color: var(--primary-color);
+      font-size: 1.6rem;
+      border-left: 5px solid var(--secondary-color);
+      padding-left: 0.75rem;
+      margin-top: 0;
+      margin-bottom: 1.5rem;
+    }
+
+    h3 {
+      color: var(--primary-color);
+      font-size: 1.25rem;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      margin-bottom: 1.25rem;
+      text-align: justify;
+    }
+
+    .calculator-container {
+      background-color: #f0fdfa;
+      border: 1px solid #ccfbf1;
+      border-radius: 12px;
+      padding: 1.75rem;
+      margin: 2rem 0;
+    }
+
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--primary-color);
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      box-sizing: border-box;
+      font-size: 1rem;
+      background-color: #ffffff;
+    }
+
+    .calc-btn {
+      background-color: var(--secondary-color);
+      color: white;
+      border: none;
+      padding: 1rem 1.5rem;
+      font-size: 1.1rem;
+      font-weight: 700;
+      border-radius: 8px;
+      cursor: pointer;
+      width: 100%;
+      transition: background-color 0.2s ease;
+    }
+
+    .calc-btn:hover {
+      background-color: #0f766e;
+    }
+
+    .calc-result {
+      margin-top: 1.5rem;
+      padding: 1.25rem;
+      background-color: #ffffff;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      display: none;
+    }
+
+    .chart-container {
+      margin: 2rem 0;
+    }
+
+    .bar-chart {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      background: #fafafa;
+      padding: 1.5rem;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+    }
+
+    .chart-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .chart-label {
+      width: 120px;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .chart-bar-bg {
+      flex-grow: 1;
+      background-color: #e2e8f0;
+      height: 24px;
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .chart-bar-fill {
+      background: linear-gradient(90deg, var(--secondary-color), #2dd4bf);
+      height: 100%;
+      border-radius: 12px;
+      transition: width 1s ease-in-out;
+    }
+
+    .chart-value {
+      width: 80px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-align: right;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+      font-size: 0.95rem;
+    }
+
+    th, td {
+      padding: 0.85rem;
+      border: 1px solid var(--border-color);
+      text-align: center;
+    }
+
+    th {
+      background-color: #f1f5f9;
+      color: var(--primary-color);
+      font-weight: 700;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f8fafc;
+    }
+
+    .badge-tag {
+      display: inline-block;
+      background-color: #eff6ff;
+      color: #2563eb;
+      padding: 0.25rem 0.75rem;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .accordion {
+      margin-top: 2rem;
+    }
+
+    .accordion-item {
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      margin-bottom: 0.75rem;
+      overflow: hidden;
+    }
+
+    .accordion-header {
+      background-color: #f8fafc;
+      padding: 1rem 1.5rem;
+      font-weight: 600;
+      cursor: pointer;
+      user-select: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .accordion-content {
+      padding: 1.5rem;
+      background-color: #ffffff;
+      border-top: 1px solid var(--border-color);
+      display: none;
+    }
+
+    .external-links {
+      background-color: #f8fafc;
+      padding: 1.5rem;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+      margin-top: 2rem;
+    }
+
+    .external-links ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .external-links li {
+      margin-bottom: 0.75rem;
+    }
+
+    .external-links a {
+      color: var(--secondary-color);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .external-links a:hover {
+      text-decoration: underline;
+    }
+
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .sidebar-widget {
+      background-color: var(--card-bg);
+      padding: 1.5rem;
+      border-radius: 16px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      border: 1px solid var(--border-color);
+    }
+
+    .tag-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .tag-cloud span {
+      background-color: #f1f5f9;
+      color: var(--text-muted);
+      padding: 0.35rem 0.65rem;
+      border-radius: 6px;
+      font-size: 0.8rem;
+    }
+
+    footer {
+      background-color: #0f172a;
+      color: #94a3b8;
+      text-align: center;
+      padding: 3rem 1rem;
+      margin-top: 4rem;
+      font-size: 0.9rem;
+    }
+
+    footer p {
+      text-align: center;
+      margin-bottom: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>2026년 법인신용대출 종합 가이드 및 금리 비교 계산기</h1>
+    <p>정부지원 정책자금부터 일반 금융권 신용도 대출까지 실시간 한도 추정 및 조건 분석</p>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="#정의와특징">법인신용대출 개요</a></li>
+      <li><a href="#전국동향">전국 지역별 대출 한도</a></li>
+      <li><a href="#실시간계산">한도 비교 계산기</a></li>
+      <li><a href="#평가기준">기업 신용 평가 기준</a></li>
+      <li><a href="#자주묻는질문">자주 묻는 질문</a></li>
+      <li><a href="#전문연구기관">공식 정보원 안내</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <div class="content-area">
+      
+      <section id="정의와특징">
+        <h2>법인신용대출의 본질과 핵심 정보</h2>
+        <p>
+          법인신용대출은 기업의 유무형 자산이나 부동산 같은 담보를 설정하지 않고 오직 법인의 재무 건전성, 사업성, 매출 구조, 그리고 대표자의 경영 신용 평점을 기초로 자금을 확보하는 제도입니다. 기업을 경영하는 과정에서 원자재 구매 비용, 신규 시설 투자 자금, 직원 급여 등의 운영 경비를 조달하기 위해 가장 먼저 검토하는 방식입니다.
+        </p>
+        <p>
+          주요 금융 기관과 전문 컨설팅 업체의 평가 방식에 따르면 기업이 자금을 집행할 때 자부담 금액의 규모와 예상 매출 증가액 사이의 타당성이 확보되어야 승인율이 상승합니다. 2026년 현재 국가 경제 활성화를 위한 신규 기업 육성 대책과 소상공인 지원 조치가 연동되면서 정부의 직접 융자와 시중 금융권의 다이렉트 신용 상품 간의 장단점을 꼼꼼히 대조해 볼 필요가 있습니다.
+        </p>
+        
+        <h3>다양한 채널을 통한 정보 습득과 최신 경향</h3>
+        <p>
+          법인신용대출을 준비하는 대표자들은 네이버, 구글과 같은 검색 포털은 물론이고 유튜브, 트위터, 인스타그램, 페이스북, 카카오톡 채널 등 다양한 온라인 경로를 통해 추천 상품을 접합니다. 특히 토스, 카카오뱅크 등 핀테크 플랫폼의 간편 조회 서비스나 AI 검색 도구인 제미나이(Gemini), 챗지피티(ChatGPT)를 활용해 사전 한도가 얼마인지 견적과 평균 비용을 가계산해보는 법인들이 급격히 증가했습니다. 
+        </p>
+        <p>
+          또한, 대표적인 온라인 커뮤니티인 디시인사이드, 보배드림, 펨코(에펨코리아) 등에서 직접 대출을 실행한 대표자들의 내돈내산 실행 후기와 신규 가입 혜택, 제2금융권 이용 시의 장점과 단점, 브랜드 선호도 순위 등의 생생한 평판을 조회하는 패턴 역시 뚜렷하게 관찰됩니다.
+        </p>
+      </section>
+
+      <section id="전국동향">
+        <h2>전국 지역별 법인 자금 동향 및 지원 현황</h2>
+        <p>
+          법인 자금 조달 여건은 지리적 특성과 지자체별 육성 산업 정책에 따라 상당한 차이점을 보입니다. 당사에서는 전국 각 지역의 기업 지원 조치와 법인신용대출의 실제 적용 실태를 광범위하게 수집하여 반영하고 있습니다.
+        </p>
+        <p>
+          서울특별시 및 부산광역시, 대구광역시, 인천광역시, 광주광역시, 대전광역시, 울산광역시, 세종특별자치시와 같은 광역 거점 도시는 제조업 및 첨단 IT 벤처 기업을 중심으로 대규모의 자금이 이동하고 있습니다. 반면 경기도의 수원시, 고양시, 용인시, 성남시, 부천시, 화성시, 안산시, 남양주시, 평택시 등 제조업 벨트가 밀집한 지역에서는 스마트 팩토리 전환 자금 및 설비 가동비 용도로 상당한 액수의 신용 자금이 소요됩니다.
+        </p>
+        <p>
+          또한 강원도, 충청북도 청주시, 충청남도 천안시, 전라북도 전주시, 전라남도 여수시, 경상북도 포항시, 경상남도 창원시, 제주특별자치도 등 각 행정 구역의 테크노파크 및 경제진흥원에서는 지역 연고 기업들을 위한 저렴한곳 연계 및 금리 이차보전 지원금과 사은품, 현금지원성 혜택을 연계하는 기획 상품을 다양하게 운영하고 있으므로 반드시 지자체 지원 사업을 함께 조회해야 지출 비용을 최소화할 수 있습니다.
+        </p>
+        
+        <h3>2026년 전국 주요 지역별 법인 대출 평균 한도 및 조달 금리</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>소재지 구분</th>
+              <th>평균 조달 금액 (억원)</th>
+              <th>예상 평균 금리 (%)</th>
+              <th>주요 지원 업종 및 혜택 종류</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>서울, 경기 (수원, 고양, 성남)</td>
+              <td>12.5</td>
+              <td>3.8</td>
+              <td>IT 서비스, 신벤처 및 수출 기업 다이렉트 지원</td>
+            </tr>
+            <tr>
+              <td>인천, 경기남부 (평택, 화성, 안산)</td>
+              <td>15.0</td>
+              <td>4.2</td>
+              <td>부품 소재 제조업, 기계 장치 도입 특화 우대</td>
+            </tr>
+            <tr>
+              <td>영남권 (부산, 대구, 울산, 포항, 창원)</td>
+              <td>11.0</td>
+              <td>4.5</td>
+              <td>선박 기자재, 자동차 금형 부품 전통 제조사 자금</td>
+            </tr>
+            <tr>
+              <td>충청권 (대전, 청주, 천안, 세종)</td>
+              <td>9.5</td>
+              <td>3.9</td>
+              <td>바이오 의약품, 신소재 연구 기반 신규 자금 우선</td>
+            </tr>
+            <tr>
+              <td>호남 및 제주 (광주, 전주, 여수, 제주)</td>
+              <td>8.0</td>
+              <td>4.6</td>
+              <td>친환경 에너지, 농수산 가공식품, 관광 브랜드 특화</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="실시간계산">
+        <h2>실시간 법인신용대출 한도 및 월 상환 금액 계산기</h2>
+        <p>
+          본 계산기는 법인의 예상 매출액과 재무 상태 및 신용등급에 따라 집행 가능한 예상 금액과 금리 한도를 산출해 볼 수 있는 모의 도구입니다. 정확한 수치를 입력할수록 실무 승인 한도와 근접한 시뮬레이션 결과를 확보할 수 있습니다. 본 데이터는 온라인 가계산용이며 실제 심사 기관의 평가서 내용과는 차이가 있을 수 있습니다.
+        </p>
+        
+        <div class="calculator-container">
+          <div class="form-group">
+            <label for="companyName">법인명 (필터링 확인용)</label>
+            <input type="text" id="companyName" class="form-control" placeholder="예: 주식회사 한국비즈니스">
+          </div>
+          
+          <div class="form-group">
+            <label for="regionSelect">법인 본점 소재지 선택</label>
+            <select id="regionSelect" class="form-control">
+              <option value="서울">서울특별시</option>
+              <option value="부산">부산광역시</option>
+              <option value="대구">대구광역시</option>
+              <option value="인천">인천광역시</option>
+              <option value="광주">광주광역시</option>
+              <option value="대전">대전광역시</option>
+              <option value="울산">울산광역시</option>
+              <option value="세종">세종특별자치시</option>
+              <option value="수원">경기도 수원시</option>
+              <option value="고양">경기도 고양시</option>
+              <option value="용인">경기도 용인시</option>
+              <option value="성남">경기도 성남시</option>
+              <option value="부천">경기도 부천시</option>
+              <option value="화성">경기도 화성시</option>
+              <option value="안산">경기도 안산시</option>
+              <option value="남양주">경기도 남양주시</option>
+              <option value="평택">경기도 평택시</option>
+              <option value="청주">충청북도 청주시</option>
+              <option value="천안">충청남도 천안시</option>
+              <option value="전주">전라북도 전주시</option>
+              <option value="여수">전라남도 여수시</option>
+              <option value="포항">경상북도 포항시</option>
+              <option value="창원">경상남도 창원시</option>
+              <option value="제주">제주특별자치도</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="annualSales">직전년도 연간 매출액 (원 단위 입력)</label>
+            <input type="number" id="annualSales" class="form-control" placeholder="예: 1000000000 (10억원)" value="1000000000">
+          </div>
+
+          <div class="form-group">
+            <label for="creditGrade">기업 자체 신용등급 평가</label>
+            <select id="creditGrade" class="form-control">
+              <option value="high">우수 등급 (BBB 이상)</option>
+              <option value="mid">보통 등급 (BB ~ B)</option>
+              <option value="low">주의 등급 (CCC 이하)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="desiredAmount">희망 조달 자금 규모 (원 단위 입력)</label>
+            <input type="number" id="desiredAmount" class="form-control" placeholder="예: 200000000 (2억원)" value="200000000">
+          </div>
+
+          <button type="button" class="calc-btn" onclick="calculateLoan()">한도 및 상환금액 추정치 계산하기</button>
+
+          <div id="calcResult" class="calc-result">
+            <h4 style="margin-top: 0; color: var(--primary-color);">모의 연산 시뮬레이션 결과</h4>
+            <p id="resCompany" style="font-weight: 700;"></p>
+            <p id="resLimit"></p>
+            <p id="resRate"></p>
+            <p id="resMonthlyPayment"></p>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 1rem;">
+              본 시뮬레이션은 각 기업의 부채 비율이나 현금 흐름 세부 지표를 반영하지 않은 통계적 평균치이므로, 상세 조율을 위해서는 정책 자금 취급 전문 상담원과의 1대1 컨설팅 진행을 추천합니다.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="평가기준">
+        <h2>기업 신용 평가와 재무 안전성 분석 지표</h2>
+        <p>
+          시중 은행 및 공공 기금 보증서 발급 기관은 법인신용대출의 대출 실행 여부와 이율 단가를 가늠하기 위해 세부적인 신용 평가 기준표를 기반으로 점수를 환산합니다. 기업 신용 등급은 단순 자산 규모만을 보는 것이 아니라 경영 효율성과 부채의 성격 및 차입 이력을 고도로 정밀하게 계량화합니다.
+        </p>
+        
+        <div class="chart-container">
+          <h3>심사 시 반영되는 기업 신용 평가 주요 항목 비중 (가상 지표)</h3>
+          <div class="bar-chart">
+            <div class="chart-row">
+              <span class="chart-label">재무 비율 건전성</span>
+              <div class="chart-bar-bg">
+                <div class="chart-bar-fill" style="width: 40%;"></div>
+              </div>
+              <span class="chart-value">40% 비중</span>
+            </div>
+            <div class="chart-row">
+              <span class="chart-label">대표자 신용 평점</span>
+              <div class="chart-bar-bg">
+                <div class="chart-bar-fill" style="width: 25%;"></div>
+              </div>
+              <span class="chart-value">25% 비중</span>
+            </div>
+            <div class="chart-row">
+              <span class="chart-label">산업 및 기술 유망성</span>
+              <div class="chart-bar-bg">
+                <div class="chart-bar-fill" style="width: 20%;"></div>
+              </div>
+              <span class="chart-value">20% 비중</span>
+            </div>
+            <div class="chart-row">
+              <span class="chart-label">매출 성장 영속성</span>
+              <div class="chart-bar-bg">
+                <div class="chart-bar-fill" style="width: 15%;"></div>
+              </div>
+              <span class="chart-value">15% 비중</span>
+            </div>
+          </div>
+        </div>
+
+        <p>
+          특히 자본 대비 부채 비율이 200%를 초과하거나 최근 연도 손익 계산서상에 당기순손실이 발생한 경우 신용 대출 상품 신청 자격 자체가 차단되는 심사 문턱이 설정될 수 있습니다. 대출 상품의 금리를 한층 낮추기 위해서는 주거래 거래처 계약 증빙 자료, 수출 실적, 특허 취득을 비롯한 유무형의 가점 기술 요소를 적극적으로 소명하여 신용 가치 등급을 최대로 끌어올려야 합니다.
+        </p>
+      </section>
+
+      <section id="자주묻는질문">
+        <h2>법인신용대출 관련 자주 묻는 질문 (FAQ)</h2>
+        <div class="accordion">
+          
+          <div class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+              <span>Q1. 신규 법인인데도 무담보 신용대출 신청이 가능한가요?</span>
+              <span>접기/펼치기</span>
+            </div>
+            <div class="accordion-content">
+              <p>
+                신규 설립 후 업력이 1년 미만인 기업은 과거 재무제표가 확립되지 않아 시중 은행의 다이렉트 신용대출 승인을 받기가 대단히 곤란합니다. 이러한 신규 설립 기업은 민간 금융권 자금 대신에 기술보증기금이나 신용보증기금의 스타트업 지원 상품, 청년 창업 정책 자금 등의 정부 간접 지원 대출 노선을 일차적으로 알아보는 것을 적극 권장합니다.
+              </p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+              <span>Q2. 법인 신용 한도를 늘리기 위한 가장 합리적인 해결책은 무엇인가요?</span>
+              <span>접기/펼치기</span>
+            </div>
+            <div class="accordion-content">
+              <p>
+                단기적으로는 과도한 임직원 가지급금과 불투명한 가수금을 조속히 정리해야 합니다. 가결산 단계에서 대표자의 가지급 청산을 통해 부채 비율을 최대한 억제하고, 유동 비율을 안정적으로 재조정하는 한편, 보증 재단이나 유관 공공 기관의 무상 보증 우대 증빙 요소를 최대한 취득하는 것이 가장 성공 가능성이 높은 길입니다.
+              </p>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <div class="accordion-header" onclick="toggleAccordion(this)">
+              <span>Q3. 제2금융권 대출 실행 시 향후 신용도 하락이나 불이익이 걱정됩니다.</span>
+              <span>접기/펼치기</span>
+            </div>
+            <div class="accordion-content">
+              <p>
+                과거에 비해 제2금융권 대출 이력의 부정적 파급력이 다소 완화된 것은 사실이나 여전히 제1금융권과의 거래 실적 대비 기업 자체 종합 평점에 부담 요소로 남게 됩니다. 그러나 자본의 적기 조달 실패로 인한 흑자 부도 위기 시에는 단기간 저렴한곳에 의존하기보다 금리가 조금 더 높더라도 한도가 확실히 증강되는 제2금융권 다이렉트 자금 조달로 숨통을 터준 후, 재무 개선을 마친 다음 1금융권 저금리 상품으로 대환 처리를 실행하는 전략도 실전에서 매우 빈번하게 사용되고 있습니다.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <section id="전문연구기관" class="external-links">
+        <h2>공인된 신뢰성 기반 외부 참고 웹사이트</h2>
+        <p>
+          법인 자금 설계 및 정책 융자 제도를 한층 정밀하게 연구하고 불법 수수료 등의 가입 피해를 사전에 방지하기 위해서는 아래의 공신력 있는 공식 외부 채널을 병행 방문하여 정확한 정보를 상호 교차 점검해야 합니다.
+        </p>
+        <ul>
+          <li><a href="https://loanforbusinessg.koreahankang.com" target="_blank" rel="noopener">법인금융정책연구소 종합 포털 (reliabledone.com 서브도메인 지원 센터)</a></li>
+          <li><a href="https://namu.wiki/w/%EB%8C%80%EC%B6%9C" target="_blank" rel="noopener">나무위키 금융 대출 및 자금 조달 개론 정보</a></li>
+          <li><a href="https://www.fss.or.kr" target="_blank" rel="noopener">금융감독원 공식 서민금융 및 기업 금융 질서 수호 마당</a></li>
+          <li><a href="https://www.kosme.or.kr" target="_blank" rel="noopener">중소벤처기업진흥공단 중소기업 정책자금 종합신청관</a></li>
+          <li><a href="https://loanforbusinessj.koreahankang.com" target="_blank" rel="noopener">신용보증기금 기업 신용 평가 및 무담보 보증서 조회 사이트</a></li>
+        </ul>
+      </section>
+
+    </div>
+
+    <div class="sidebar">
+      <div class="sidebar-widget">
+        <h3 style="margin-top:0;">신속 비대면 견적 제안</h3>
+        <p style="font-size: 0.9rem; color: var(--text-muted);">
+          무료 사전 적격성 검토를 위한 법인 정보를 안심하고 제출해 주세요. 맞춤형 신용 설계 제안을 전달해 드립니다.
+        </p>
+        <form id="consultForm" onsubmit="submitConsultation(event)">
+          <div class="form-group">
+            <input type="text" id="consultName" class="form-control" placeholder="대표자 혹은 담당자명" required>
+          </div>
+          <div class="form-group">
+            <input type="tel" id="consultPhone" class="form-control" placeholder="연락처 (예: 010-0000-0000)" required>
+          </div>
+          <div class="form-group">
+            <textarea id="consultMemo" class="form-control" rows="4" placeholder="희망 필요금액 및 기업 강점 등을 기재하세요"></textarea>
+          </div>
+          <button type="submit" class="calc-btn" style="background-color: var(--accent-color);">상담 예약 및 견적 신청</button>
+        </form>
+      </div>
+
+      <div class="sidebar-widget">
+        <h3 style="margin-top:0;">관련 태그 및 키워드</h3>
+        <div class="tag-cloud">
+          <span>법인신용대출</span>
+          <span>금리 비교</span>
+          <span>한도 계산기</span>
+          <span>정부자금</span>
+          <span>신용평가</span>
+          <span>다이렉트 조회</span>
+          <span>무상담 가입</span>
+          <span>최저 이율</span>
+          <span>법인 자금</span>
+          <span>재무 비율</span>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    function calculateLoan() {
+      const companyName = document.getElementById('companyName').value || '이름 없음 법인';
+      const region = document.getElementById('regionSelect').value;
+      const sales = parseFloat(document.getElementById('annualSales').value) || 0;
+      const grade = document.getElementById('creditGrade').value;
+      const desired = parseFloat(document.getElementById('desiredAmount').value) || 0;
+
+      let multiplier = 0.15;
+      let baseRate = 4.2;
+
+      if (grade === 'high') {
+        multiplier = 0.25;
+        baseRate = 3.5;
+      } else if (grade === 'mid') {
+        multiplier = 0.15;
+        baseRate = 5.5;
+      } else {
+        multiplier = 0.05;
+        baseRate = 8.5;
+      }
+
+      if (region === '서울' || region === '수원' || region === '성남' || region === '화성') {
+        baseRate -= 0.2;
+      }
+
+      let estimatedLimit = Math.min(sales * multiplier, desired);
+      if (estimatedLimit < 10000000) {
+        estimatedLimit = 10000000; 
+      }
+
+      const yearlyInterest = estimatedLimit * (baseRate / 100);
+      const monthlyInterest = Math.floor(yearlyInterest / 12);
+
+      document.getElementById('resCompany').innerText = companyName + ' (' + region + ' 소재 법인) 분석 결과';
+      document.getElementById('resLimit').innerText = '예상 가능 한도 금액: 약 ' + Math.floor(estimatedLimit / 10000).toLocaleString() + ' 만원';
+      document.getElementById('resRate').innerText = '가상 우대 적용 금리: 연 ' + baseRate.toFixed(1) + '% 수준';
+      document.getElementById('resMonthlyPayment').innerText = '예상 월 평균 지출 이자 비용: 약 ' + monthlyInterest.toLocaleString() + ' 원';
+      
+      document.getElementById('calcResult').style.display = 'block';
+    }
+
+    function toggleAccordion(element) {
+      const content = element.nextElementSibling;
+      if (content.style.display === 'block') {
+        content.style.display = 'none';
+      } else {
+        content.style.display = 'block';
+      }
+    }
+
+    function submitConsultation(event) {
+      event.preventDefault();
+      const name = document.getElementById('consultName').value;
+      const phone = document.getElementById('consultPhone').value;
+      alert(name + ' 대표님, 기재해주신 연락처 ' + phone + ' 로 2026년 정책 금융 비교 분석 상담 요청이 성공적으로 접수되었습니다. 담당 전문가가 빠른 시간 내에 연락드리겠습니다.');
+      document.getElementById('consultForm').reset();
+    }
+  </script>
+  
